@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Almacén Nivel Experto</title>
+</head>
+<body style="font-family: Arial; padding: 20px;">
+
+    <h1>Gestión de Almacén</h1>
+    
+    <div style="border: 1px solid black; padding: 15px; margin-bottom: 20px;">
+        <input type="text" id="nombreProducto" placeholder="Nombre (ej. Camiseta)">
+        <select id="categoriaProducto">
+            <option value="ropa">Ropa</option>
+            <option value="electronica">Electrónica</option>
+        </select>
+        <input type="number" id="precioBase" placeholder="Precio Base">
+        <input type="number" id="unidadesStock" placeholder="Unidades">
+        <button id="btnAnadir">Añadir al almacén</button>
+    </div>
+
+    <div style="margin-bottom: 20px;">
+        <button id="btnAplicarRebajas">Aplicar 20% Descuento a Ropa</button>
+        <button id="btnVerificarStock">¿Todo tiene al menos 5 unidades?</button>
+    </div>
+
+    <table border="1" width="100%" style="text-align: center; border-collapse: collapse;">
+        <thead style="background-color: lightgrey;">
+            <tr>
+                <th>ID Único</th>
+                <th>Producto</th>
+                <th>Categoría</th>
+                <th>Precio Actual</th>
+                <th>Stock</th>
+                <th>Acción</th>
+            </tr>
+        </thead>
+        <tbody id="cuerpoTablaAlmacen">
+            </tbody>
+    </table>
+
+    <script src="ejercicio6.js"></script>
+</body>
+</html>
