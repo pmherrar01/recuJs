@@ -8,6 +8,8 @@ const precioU = document.getElementById("precioEntrada");
 const paseVipU = document.getElementById("pasesVip");
 let aConciertos = [];
 const botonAnadirConcierto = document.getElementById("btnAnadirConcierto");
+const tabla =  document.getElementById("cuerpoTablaConciertos");
+const botonBorrar = document.getElementsByClassName("btn-cancelar");
 
 document.addEventListener("DOMContentLoaded", () => {
   let datosLocal = JSON.parse(localStorage.getItem("conciertos"));
@@ -16,6 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
     return;
   } else {
     aConciertos = datosLocal;
+    pintarTabla(aConciertos);
   }
 });
 
@@ -96,3 +99,47 @@ botonAnadirConcierto.onclick = () => {
     window.alert("Error deves introducir los datos bien");
   }
 };
+
+
+function pintarTabla(conciertos){
+
+  if(tabla){
+    if(conciertos.length != 0){
+      conciertos.forEach(concierto => {
+        
+        let respuesta = concierto.paseVip === true ? "Si" : "No";
+
+
+        tabla.innerHTML += `
+        <tr>
+          <td>${concierto.id}</td>
+          <td>${concierto.nombreGrupo}</td>
+          <td>${concierto.ciudad}</td>
+          <td>${concierto.precio}</td>
+          <td>${respuesta}</td>
+          <td><button class="btn-cancelar" data-id="${concierto.id}">Cancelar</button></td>
+        </tr>
+        `;
+      });
+    }
+  }
+
+}
+
+
+
+tabla.addEventListener("click", (even) => {
+
+  if(even.target.classList.contains("btn-cancelar")){
+    let id = parseInt(even.target.dataset.id);
+
+    let posicion = aConciertos.findIndex((concierto) => concierto.id === id);
+
+    aConciertos.splice(posicion,1);
+
+    pintarTabla(aConciertos);
+    localStorage.getItem("conciertos", aConciertos);
+
+  }
+
+})
