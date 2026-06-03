@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>TicketMaster Junior</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        .promo-container { display: flex; align-items: center; gap: 15px; margin-bottom: 20px; }
+        #relojPromo { font-size: 24px; font-weight: bold; color: red; }
+        #artistaPatrocinador { background-color: #f0f0f0; padding: 15px; margin-bottom: 20px; border-left: 5px solid purple; }
+        .formulario { border: 1px solid #ccc; padding: 15px; margin-bottom: 20px; max-width: 500px; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; text-align: left; }
+        th, td { border: 1px solid #ddd; padding: 8px; }
+        th { background-color: #f2f2f2; }
+        .btn-cancelar { background-color: #ff4c4c; color: white; border: none; padding: 5px 10px; cursor: pointer; }
+    </style>
+</head>
+<body>
+
+    <h1>Plataforma de Gestión de Conciertos 🎸</h1>
+
+    <div id="artistaPatrocinador">
+        Cargando patrocinador...
+    </div>
+
+    <div class="promo-container">
+        <div id="relojPromo">Oferta acaba en: 60s</div>
+        <button id="btnPausarPromo">Pausar/Reanudar Promo</button>
+    </div>
+
+    <div class="formulario">
+        <h3>Añadir Nuevo Concierto</h3>
+        <label>Grupo: <input type="text" id="nombreGrupo"></label><br><br>
+        <label>Ciudad: 
+            <select id="ciudadConcierto">
+                <option value="" disabled selected>Selecciona ciudad</option>
+                <option value="Madrid">Madrid</option>
+                <option value="Barcelona">Barcelona</option>
+                <option value="Valencia">Valencia</option>
+                <option value="Sevilla">Sevilla</option>
+            </select>
+        </label><br><br>
+        <label>Precio: <input type="number" id="precioEntrada" min="0"></label><br><br>
+        <label><input type="checkbox" id="pasesVip"> ¿Tiene pases VIP?</label><br><br>
+        <button id="btnAnadirConcierto">Añadir Concierto</button>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>ID Único</th>
+                <th>Grupo</th>
+                <th>Ciudad</th>
+                <th>Precio</th>
+                <th>VIP</th>
+                <th>Acción</th>
+            </tr>
+        </thead>
+        <tbody id="cuerpoTablaConciertos">
+            </tbody>
+    </table>
+
+    <script src="ejercicio8.js"></script>
+</body>
+</html>

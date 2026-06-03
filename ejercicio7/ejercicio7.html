@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Panel de Sensores</title>
+    <style>
+        .sensor-card { border: 1px solid #ccc; padding: 10px; margin: 5px; }
+        .fallando { border-left: 5px solid red; background-color: #ffe6e6; }
+        .ok { border-left: 5px solid green; background-color: #e6ffe6; }
+    </style>
+</head>
+<body style="font-family: Arial; padding: 20px;">
+
+    <h1>Centro de Control de Sensores</h1>
+
+    <div id="alertaPeligro" style="display: none; background-color: red; color: white; padding: 15px; font-weight: bold; margin-bottom: 20px;">
+        ⚠️ ALERTA CRÍTICA: Hay sensores fallando en la red.
+    </div>
+
+    <div style="margin-bottom: 20px; font-size: 1.2em;">
+        Actualizando datos en: <strong id="contadorTiempo">10</strong> segundos.
+        <button id="btnPararTemporizador" style="margin-left: 15px;">Detener Auto-Refresco</button>
+    </div>
+
+    <button id="btnReparar" style="margin-bottom: 20px; padding: 10px; background-color: blue; color: white;">
+        Mandar a reparar sensores seleccionados
+    </button>
+
+    <div id="contenedorSensores">
+        </div>
+
+    <script src="ejercicio7.js"></script>
+</body>
+</html>
