@@ -95,6 +95,7 @@ botonAnadirConcierto.onclick = () => {
 
     aConciertos.push(concierto);
     localStorage.setItem("conciertos", JSON.stringify(aConciertos));
+    pintarTabla(aConciertos);
   } else {
     window.alert("Error deves introducir los datos bien");
   }
@@ -105,6 +106,9 @@ function pintarTabla(conciertos){
 
   if(tabla){
     if(conciertos.length != 0){
+
+      tabla.innerHTML = "";
+
       conciertos.forEach(concierto => {
         
         let respuesta = concierto.paseVip === true ? "Si" : "No";
@@ -138,7 +142,7 @@ tabla.addEventListener("click", (even) => {
     aConciertos.splice(posicion,1);
 
     pintarTabla(aConciertos);
-    localStorage.getItem("conciertos", aConciertos);
+    localStorage.getItem("conciertos", JSON.stringify(aConciertos));
 
   }
 
