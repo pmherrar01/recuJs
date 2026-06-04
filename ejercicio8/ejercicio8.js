@@ -105,9 +105,12 @@ botonAnadirConcierto.onclick = () => {
 function pintarTabla(conciertos){
 
   if(tabla){
+
+          tabla.innerHTML = "";
+
     if(conciertos.length != 0){
 
-      tabla.innerHTML = "";
+
 
       conciertos.forEach(concierto => {
         
@@ -142,7 +145,7 @@ tabla.addEventListener("click", (even) => {
     aConciertos.splice(posicion,1);
 
     pintarTabla(aConciertos);
-    localStorage.getItem("conciertos", JSON.stringify(aConciertos));
+    localStorage.setItem("conciertos", JSON.stringify(aConciertos));
 
   }
 

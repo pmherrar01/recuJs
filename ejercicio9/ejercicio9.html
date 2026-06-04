@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Netflix Junior</title>
+    <style>
+        body { font-family: Arial; padding: 20px; background-color: #141414; color: white; }
+        .buscador { margin-bottom: 30px; text-align: center; }
+        input[type="text"] { padding: 10px; width: 300px; font-size: 16px; border-radius: 5px; border: none; }
+        select { padding: 10px; font-size: 16px; border-radius: 5px; }
+        .grid-peliculas { display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; }
+        .tarjeta { background-color: #333; padding: 15px; border-radius: 10px; width: 200px; text-align: center; }
+        .tarjeta h3 { margin: 0 0 10px 0; color: #E50914; }
+        .tarjeta span { display: block; font-size: 14px; color: #aaa; margin-bottom: 10px; }
+    </style>
+</head>
+<body>
+
+    <h1 style="text-align: center; color: #E50914;">Netflix Junior</h1>
+
+    <div class="buscador">
+        <input type="text" id="inputBuscador" placeholder="Busca una película por título...">
+        <select id="selectGenero">
+            <option value="Todos">Todos los géneros</option>
+            <option value="Accion">Acción</option>
+            <option value="Ciencia Ficcion">Ciencia Ficción</option>
+            <option value="Comedia">Comedia</option>
+        </select>
+    </div>
+
+    <div class="grid-peliculas" id="contenedorPeliculas">
+        </div>
+
+    <script src="ejercicio9.js"></script>
+</body>
+</html>
