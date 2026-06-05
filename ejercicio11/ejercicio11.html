@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>FakeStore Junior</title>
+    <style>
+        body { font-family: Arial; padding: 20px; display: flex; gap: 30px; }
+        .tienda { flex: 2; }
+        .carrito-panel { flex: 1; background: #f9f9f9; padding: 20px; border-radius: 8px; border: 1px solid #ddd; height: fit-content; }
+        .grid-productos { display: flex; flex-wrap: wrap; gap: 15px; }
+        .card { border: 1px solid #ccc; padding: 15px; border-radius: 8px; width: 200px; text-align: center; }
+        .card img { max-width: 100px; height: 100px; object-fit: contain; }
+        button { cursor: pointer; background: #007bff; color: white; border: none; padding: 8px 12px; border-radius: 4px; margin-top: 10px; }
+        .btn-borrar { background: #dc3545; padding: 5px 10px; font-size: 12px; }
+        .item-carrito { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; border-bottom: 1px solid #eee; padding-bottom: 5px; }
+
+        /* Contenedor principal de la tarjeta */
+.tarjeta-producto {
+    background: white;
+    border: 1px solid #eaeaea;
+    border-radius: 12px;
+    padding: 15px;
+    width: 220px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Efecto al pasar el ratón por encima de la tarjeta */
+.tarjeta-producto:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+}
+
+/* Caja para que todas las imágenes ocupen lo mismo */
+.img-container {
+    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 15px;
+    background-color: white; /* Por si las imágenes tienen fondo transparente */
+}
+
+/* Para que la imagen no se deforme */
+.img-container img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+.info-producto {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Trunca los títulos súper largos a 2 líneas como máximo */
+.titulo-producto {
+    font-size: 14px;
+    color: #333;
+    margin: 0;
+    text-align: center;
+    display: -webkit-box;
+    -webkit-line-clamp: 2; 
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.precio-producto {
+    font-size: 22px;
+    font-weight: bold;
+    color: #28a745; /* Verde tienda */
+}
+
+.btn-anadir {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 6px;
+    cursor: pointer;
+    width: 100%;
+    font-weight: bold;
+    font-size: 14px;
+    transition: background-color 0.2s;
+}
+
+.btn-anadir:hover {
+    background-color: #0056b3;
+}
+
+
+/* Contenedor principal de cada producto en el carrito */
+.item-carrito {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: white;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    border: 1px solid #eaeaea;
+}
+
+/* Miniatura de la imagen */
+.img-carrito {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+    background: white;
+    border-radius: 4px;
+}
+
+/* Caja para el texto (ocupa el espacio libre) */
+.info-carrito {
+    flex-grow: 1;
+    margin: 0 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Título truncado a 1 sola línea para que el carrito no se desborde */
+.titulo-carrito {
+    font-size: 12px;
+    font-weight: bold;
+    color: #333;
+    display: -webkit-box;
+    -webkit-line-clamp: 1; 
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.precio-carrito {
+    font-size: 14px;
+    color: #28a745; /* Verde precio */
+    font-weight: bold;
+    margin-top: 3px;
+}
+
+/* Botón de eliminar (pequeño y rojo) */
+.btn-borrar {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    padding: 6px 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 12px;
+    transition: background-color 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-borrar:hover {
+    background-color: #c82333; /* Rojo más oscuro al pasar el ratón */
+}
+    </style>
+</head>
+<body>
+
+    <div class="tienda">
+        <h2>Productos FakeStore</h2>
+        <div id="contenedorProductos" class="grid-productos">
+            </div>
+    </div>
+
+    <div class="carrito-panel">
+        <h2>Mi Carrito 🛒</h2>
+        <div id="contenedorCarrito">
+            <p>El carrito está vacío.</p>
+        </div>
+        <hr>
+        <h3>Total: $<span id="precioTotal">0.00</span></h3>
+        <button id="btnPagar" style="background: green; width: 100%; font-size: 18px;">Pagar Ahora</button>
+    </div>
+
+    <script src="ejercicio11.js"></script>
+</body>
+</html>
