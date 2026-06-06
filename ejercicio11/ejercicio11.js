@@ -48,7 +48,7 @@ function pintarCarrito(aCarrito) {
     } else {
         aCarrito.forEach(proCa => {
             carritoResumen.innerHTML += `
-            <div class="item-carrito">
+            <div class="item-carrito" >
     <img src="${proCa.image}" alt="Producto" class="img-carrito">
     <div class="info-carrito">
         <span class="titulo-carrito">${proCa.title}</span>
@@ -60,6 +60,9 @@ function pintarCarrito(aCarrito) {
             `
         });
     }
+
+     let total = carrito.reduce((acumulador, pro) => acumulador + pro.price, 0);
+        document.getElementById("precioTotal").innerHTML = total.toFixed(2);
 }
 
 
@@ -73,12 +76,28 @@ tienda.addEventListener("click", (event) => {
 
         pintarCarrito(carrito);
 
-        let total = carrito.reduce((acumulador, pro) => acumulador + pro.price, 0);
-
-// ¡Faltaba inyectarlo en el DOM!
-document.getElementById("precioTotal").innerHTML = total.toFixed(2);
+       
 
     }
 
 
+    
+
+
 })
+
+
+
+
+carritoResumen.addEventListener("click", (event) => {
+if(event.target.classList.contains("btn-borrar")){
+        let id = parseInt(event.target.dataset.id);
+        let posicion = carrito.findIndex((producto) => producto.id === id);
+
+        carrito.splice(catalogo[posicion],1);
+        pintarCarrito(carrito);
+
+    }
+})
+
+

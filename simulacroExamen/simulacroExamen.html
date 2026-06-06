@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Examen - VueloLoco</title>
+    <style>
+        body { font-family: Arial; padding: 20px; background: #e0f7fa; }
+        .header { display: flex; justify-content: space-between; background: white; padding: 15px; border-radius: 8px; margin-bottom: 20px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        .reloj { font-size: 20px; font-weight: bold; color: #d32f2f; }
+        .grid { display: flex; gap: 20px; }
+        .panel { background: white; padding: 20px; border-radius: 8px; flex: 1; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        input, select, button { width: 100%; padding: 8px; margin: 5px 0 15px; box-sizing: border-box; }
+        .error-msg { color: red; font-size: 12px; display: none; margin-top: -10px; margin-bottom: 10px; }
+        .input-error { border: 2px solid red; }
+        table { width: 100%; border-collapse: collapse; margin-top: 15px; }
+        th, td { border: 1px solid #ccc; padding: 10px; text-align: left; }
+        th { background: #00bcd4; color: white; }
+        .btn-borrar { background: #f44336; color: white; border: none; cursor: pointer; padding: 5px; width: auto; }
+        .total-box { margin-top: 20px; font-size: 18px; font-weight: bold; text-align: right; }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <div id="agenteDia">Cargando agente de guardia...</div>
+        <div class="reloj">Oferta Flash termina en: <span id="temporizador">120</span>s</div>
+    </div>
+
+    <div class="grid">
+        <div class="panel">
+            <h3>Nueva Reserva 🎟️</h3>
+            
+            <label>Nombre del Pasajero:</label>
+            <input type="text" id="nombrePasajero" placeholder="Mínimo 3 letras">
+            <div id="errorNombre" class="error-msg">El nombre debe tener al menos 3 letras.</div>
+
+            <label>Correo Electrónico:</label>
+            <input type="text" id="emailPasajero" placeholder="ejemplo@correo.com">
+            <div id="errorEmail" class="error-msg">Formato de correo inválido.</div>
+
+            <label>Destino:</label>
+            <select id="destinoVuelo">
+                <option value="Paris">París - 150€</option>
+                <option value="Roma">Roma - 120€</option>
+                <option value="Tokio">Tokio - 850€</option>
+            </select>
+
+            <label>Fecha de Vuelo:</label>
+            <input type="date" id="fechaVuelo">
+            <div id="errorFecha" class="error-msg">La fecha debe ser estrictamente posterior a hoy.</div>
+
+            <button id="btnReservar" style="background: #4caf50; color: white; font-weight: bold;">Confirmar Reserva</button>
+        </div>
+
+        <div class="panel" style="flex: 2;">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+                <h3>Panel de Reservas</h3>
+                <select id="filtroDestino" style="width: 200px;">
+                    <option value="Todos">Todos los destinos</option>
+                    <option value="Paris">París</option>
+                    <option value="Roma">Roma</option>
+                    <option value="Tokio">Tokio</option>
+                </select>
+            </div>
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre</th>
+                        <th>Email</th>
+                        <th>Destino</th>
+                        <th>Fecha</th>
+                        <th>Precio</th>
+                        <th>Acción</th>
+                    </tr>
+                </thead>
+                <tbody id="cuerpoTabla">
+                    </tbody>
+            </table>
+
+            <div class="total-box">
+                Ingresos Totales: €<span id="totalIngresos">0.00</span>
+            </div>
+        </div>
+    </div>
+
+    <script src="simulacroExamen.js"></script>
+</body>
+</html>
