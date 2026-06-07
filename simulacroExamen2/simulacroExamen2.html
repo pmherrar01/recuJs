@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Examen - BurgerMaster</title>
+    <style>
+        body { font-family: Arial; padding: 20px; background: #fff3e0; }
+        .header { display: flex; justify-content: space-between; background: white; padding: 15px; border-radius: 8px; margin-bottom: 20px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); border-left: 5px solid #ff9800; }
+        .reloj { font-size: 20px; font-weight: bold; color: #d32f2f; }
+        .grid { display: flex; gap: 20px; }
+        .panel { background: white; padding: 20px; border-radius: 8px; flex: 1; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        input, select, button { width: 100%; padding: 8px; margin: 5px 0 15px; box-sizing: border-box; }
+        .error-msg { color: red; font-size: 12px; display: none; margin-top: -10px; margin-bottom: 10px; }
+        .input-error { border: 2px solid red; background-color: #ffebee; }
+        table { width: 100%; border-collapse: collapse; margin-top: 15px; }
+        th, td { border: 1px solid #ccc; padding: 10px; text-align: left; }
+        th { background: #ff9800; color: white; }
+        .btn-cancelar { background: #f44336; color: white; border: none; cursor: pointer; padding: 6px; width: auto; border-radius: 4px; }
+        .total-box { margin-top: 20px; font-size: 18px; font-weight: bold; text-align: right; color: #2e7d32; }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <div id="camareroTurno">Cargando camarero del turno...</div>
+        <div class="reloj">La cocina cierra en: <span id="temporizador">90</span>s</div>
+    </div>
+
+    <div class="grid">
+        <div class="panel">
+            <h3>Nuevo Pedido 📝</h3>
+            
+            <label>Nombre del Cliente:</label>
+            <input type="text" id="nombreCliente" placeholder="Ej: Juan">
+            <div id="errorNombre" class="error-msg">El nombre debe tener más de 2 letras.</div>
+
+            <label>Código de Descuento (Opcional):</label>
+            <input type="text" id="codigoDescuento" placeholder="Ej: VIP123">
+            <div id="errorCodigo" class="error-msg">El código debe ser exactamente 3 letras mayúsculas y 3 números.</div>
+
+            <label>Hamburguesa:</label>
+            <select id="tipoBurger">
+                <option value="Clasica">Clásica - 8.00€</option>
+                <option value="Queso">Doble Queso - 10.00€</option>
+                <option value="Vegana">Vegana - 9.50€</option>
+            </select>
+
+            <label style="display: flex; align-items: center; gap: 10px; margin-bottom: 15px;">
+                <input type="checkbox" id="extraPatatas" style="width: auto; margin: 0;"> 
+                Añadir Patatas Grandes (+2.00€)
+            </label>
+
+            <button id="btnHacerPedido" style="background: #4caf50; color: white; font-weight: bold; font-size: 16px;">Mandar a Cocina</button>
+        </div>
+
+        <div class="panel" style="flex: 2;">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+                <h3>Comandas en Curso</h3>
+                <select id="filtroBurger" style="width: 250px;">
+                    <option value="Todas">Mostrar Todas</option>
+                    <option value="Clasica">Solo Clásicas</option>
+                    <option value="Queso">Solo Doble Queso</option>
+                    <option value="Vegana">Solo Veganas</option>
+                </select>
+            </div>
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID Ticket</th>
+                        <th>Cliente</th>
+                        <th>Hamburguesa</th>
+                        <th>Patatas</th>
+                        <th>Precio Final</th>
+                        <th>Acción</th>
+                    </tr>
+                </thead>
+                <tbody id="cuerpoTabla">
+                    </tbody>
+            </table>
+
+            <div class="total-box">
+                Caja Total: €<span id="cajaTotal">0.00</span>
+            </div>
+        </div>
+    </div>
+
+    <script src="simulacroExamen2.js"></script>
+</body>
+</html>
